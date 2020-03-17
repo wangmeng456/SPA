@@ -29,6 +29,50 @@ $(function() {
   
   });
 
+  // 1. event keypress
+  // 2. event argument get key value, e.key and e.target.value
+  // 3. feifa key filter, e.preventDefault
+  // 4. 合法字符还要考虑出现的位置，例如：.，e，E，-
+  $width.keypress(function(e){
+    console.log(e);
+    if(/[abcdf-zABCDF-Z`~!@#$%^&*()=_+[\]{}|;:'",<>/?\\]/.test(e.key)){
+      e.preventDefault();
+      return;
+    } 
+    // 合法字符 e
+    // 允许出现在非科学计数法的数字末尾
+    // 允许出现在非科学计数法的数字中间
+    // 不允许出现在非科学计数法的数字前面
+    // 不允许出现在空文本中
+    // 不允许出现在负号后面
+    // 不允许出现在科学计数法（e和E）数字的末尾
+    // 不允许出现在科学计数法数字的前面
+    // 不允许出现在科学技术发数字的中间
+    var pos = e.target.selectionStart,
+        con = e.target.value;
+    console.log(pos);
+    console.log(con);
+    if(e.key === 'e'){
+      if(pos === 0 || con.indexOf('e') !== -1 || con.indexOf('E') !== -1){
+        e.preventDefault();
+        return;
+      }
+      if(pos ===1 && con.substring(0,1) === '-'){
+        e.preventDefault();
+        return;
+      }
+      // 合法字符E
+      // 合法字符.
+      // 合法字符-
+    }
+  });
+  $height.keypress(function(e){
+    if(/[abcdf-zABCDF-Z`~!@#$%^&*()=_+[\]{}|;:'",<>/?\\]/.test(e.key)){
+      e.preventDefault();
+      return;      
+    }
+  });
+
   /**
    * 小数点后面保留第 n 位
    * 
