@@ -13,13 +13,20 @@
     <script src="./timer-button.js"></script>
     <script>
       $(function(){
-        /*$timerButton.show('#main');*/
-        
+        /*
+        $timerButton.show({
+          num: 6,
+          title: '发送验证码',
+          onClick: function(){
+            alert('短信已发送！');                           
+          }
+        });
+
         var $btnAdd = $('#add');
         $btnAdd.click(function(){
           $timerButton.show({
             num: 6,
-            title: '发送验证码',
+            title: '同意',
             onClick: function(){
               console.log('点击了定时器按钮！');
             }
@@ -27,6 +34,30 @@
           console.log('add timer button');
         })
         
+      */
+
+
+        var tb1 = new TimerButton();
+        tb1.show({
+          num: 6,
+          title: '发送验证码',
+          onClick: function(){
+            alert('就知道你会同意的！');
+          }
+        });
+
+        var $btnAdd = $('#add');
+        $btnAdd.click(function(){
+          var tb = new TimerButton();
+          tb.show({
+            num: 6,
+            title: '发送验证码',
+              onClick: function(){
+                alert('就知道你会同意的！');
+            }
+          });
+          console.log('add timer button');
+        })
       })
     </script>
   </body>

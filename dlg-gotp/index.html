@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>goto dialog的测试页面</title>
+    <link rel="stylesheet" herf="./dlo-goto.css">
+  </head>
+  <body>
+    <input id="popup" type="button" value="弹出对话框">
+    <hr>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./dlg-goto.js"></script>
+    <script>
+      $(function(){
+        var $btnDlg = $('#popup');
+        $btnDlg.click(function(){
+          $dlgGoto.show({
+            num: 6,
+            title: '同意',
+            onClick: function(){
+              console.log('就知道你会同意的！');
+            }
+          });
+        })
+      })
+
+    </script>
+  </body>
+</html>
